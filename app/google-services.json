@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "445488973051",
+    "project_id": "deliziuszappfcm",
+    "storage_bucket": "deliziuszappfcm.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:445488973051:android:d5e4c7825f882522905c5e",
+        "android_client_info": {
+          "package_name": "zombie.deliziusz.deliziuszappfcm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "445488973051-3tju9cvdv2lb3r1ftm3kni9067r6e0hp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBT9GjVDmvRu7yCbxKOjve0YX4RuxZGj34"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "445488973051-3tju9cvdv2lb3r1ftm3kni9067r6e0hp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
