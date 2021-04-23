@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -19,12 +18,11 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class MainActivity extends AppCompatActivity {
-
+public class RegistroNuevo extends AppCompatActivity {
     private static final String TAG =" ";
-    TextView mRegister;
+    TextView miIniciarSesion;
     EditText mCorreo, mClave;
-    Button miinicioSesion;
+    Button mRegister;
 
     //variables Firebase
     private FirebaseAuth mAuth;
@@ -32,38 +30,36 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        mRegister = (TextView) findViewById(R.id.txt_register);
-        mCorreo = (EditText) findViewById(R.id.txt_correo);
-        mClave = (EditText) findViewById(R.id.txt_password);
-        miinicioSesion = (Button) findViewById(R.id.btn_iniciarsesion);
+        setContentView(R.layout.activity_registro_nuevo);
 
         mAuth = FirebaseAuth.getInstance();
-        //
-        miinicioSesion.setOnClickListener(new View.OnClickListener() {
+
+        miIniciarSesion = (TextView) findViewById(R.id.txt_iniciar_sesion);
+        mCorreo = (EditText) findViewById(R.id.txt_correo);
+        mClave =(EditText) findViewById(R.id.txt_password);
+        mRegister = (Button) findViewById(R.id.btn_register);
+
+        mRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String email, password;
                 email = mCorreo.getText().toString();
                 password = mClave.getText().toString();
                 mAuth.signInWithEmailAndPassword(email,password)
-                        .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
+                        .addOnCompleteListener(RegistroNuevo.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     //Sign in success
-                                    Log.d(TAG, "signInWithEmail:succes");
-                                    Intent intent = new Intent(MainActivity.this, InicioSesionExitoso.class);
+                                    Intent intent = new Intent(RegistroNuevo.this, InicioSesionExitoso.class);
                                     startActivity(intent);
-                                    Toast.makeText(MainActivity.this, "Bienvenido",
+                                    Toast.makeText(RegistroNuevo.this, "Registrado correctamente",
                                             Toast.LENGTH_LONG).show();
+                                    Log.d(TAG, "createUserWithEmail:success");
                                     FirebaseUser user = mAuth.getCurrentUser();
                                     updateUI(user);
                                 } else {
-                                    //if sign in fails, display a message to the user
-                                    Log.w(TAG, "signInWithEmail:failure", task.getException());
-                                    Toast.makeText(MainActivity.this, "Error al iniciar sesion",
+                                    Toast.makeText(RegistroNuevo.this, "Error al iniciar sesion",
                                             Toast.LENGTH_LONG).show();
                                     updateUI(null);
                                 }
@@ -71,27 +67,14 @@ public class MainActivity extends AppCompatActivity {
                         });
             }
         });
-        //Escuchador
-        mRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,RegistroNuevo.class));
-            }
-        });
-    }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        updateUI(currentUser);
     }
-
     private void updateUI(FirebaseUser user) {
-            if(user != null){
-                Intent intent = new Intent(MainActivity.this, InicioSesionExitoso.class);
-                startActivity(intent);
-                finish();
+        if(user != null){
+            Intent intent = new Intent(RegistroNuevo.this, InicioSesionExitoso.class);
+            startActivity(intent);
+            finish();
         }
     }
-}
+
+    }

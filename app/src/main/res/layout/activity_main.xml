@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@drawable/tres">
 
     <Button
         android:id="@+id/btn_iniciarsesion"
@@ -12,14 +13,16 @@
         android:layout_height="68dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="83dp"
-        android:layout_marginTop="412dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="431dp"
         android:text="Iniciar Sesion">
 
     </Button>
 
     <EditText
         android:id="@+id/txt_correo"
+        android:textColor="#000"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -31,6 +34,7 @@
 
     <EditText
         android:id="@+id/txt_password"
+        android:textColor="#000"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -46,8 +50,21 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="202dp"
-        android:text="O" />
+        android:layout_marginBottom="100dp"
+        android:text="O"
+        android:textSize="30dp"/>
+
+    <TextView
+        android:id="@+id/txtcosito"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="579dp"
+        android:text="App FIREBASE Y ANDROID"
+        android:textColor="#000"
+        android:textSize="30dp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/txt_register"
@@ -55,7 +72,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="122dp"
-        android:text="Registrarme" />
+        android:layout_marginBottom="34dp"
+        android:text="Registrarme"
+        android:textSize="30dp" />
 
 </RelativeLayout>
